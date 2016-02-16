@@ -56,6 +56,11 @@ class ViewController: UIViewController {
                     self.nextButton.enabled = true
                 }
                 else {
+                    /*
+                     In this case, there was a networking error and we print it,
+                     or we couldn't cast the json as a dict then grab the array,
+                     so something is wrong with the json if this prints nil
+                    */
                     print(response.result.error?.localizedDescription)
                     self.quoteTextView.text = "no quotes for u ☹️"
                 }
