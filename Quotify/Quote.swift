@@ -11,14 +11,14 @@ import Mapper
 
 struct Quote: Mappable{
     //MARK: Properties
-    let quote: String
+    let text: String
     let author: String
     let generated: Bool?
     let date: NSDate?
     let source: String?
     
     init(map: Mapper) throws {
-        quote = try map.from("quote")
+        text = try map.from("quote")
         author = try map.from("author")
         generated = map.optionalFrom("generated")
         date = map.optionalFrom("date")
@@ -26,6 +26,6 @@ struct Quote: Mappable{
     }
     
     func printQuote(){
-        print("Quote: " + quote + "\nAuthor: " + author)
+        print("Quote: " + text + "\nAuthor: " + author)
     }
 }

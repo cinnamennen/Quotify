@@ -14,27 +14,54 @@ import Alamofire
 class ViewController: UIViewController {
     
     @IBOutlet weak var quoteTextView: UITextView!
-    let quotes = ["I love IRC - kylebshr", "Can we use slack? - jaredmsmith", "What are you talking about? - joecon"]
+    @IBOutlet weak var nextButton: UIButton!
+    
+    var quotes = [Quote]()
     
     var currentQuote = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        setNextQuote()
+
+        // Disable this until we've loaded the quotes
+        nextButton.enabled = false
+        
+        refreshQuotes()
     }
     
     func setNextQuote() {
-        quoteTextView.text = quotes[currentQuote % quotes.count]
+        
+        let quote = quotes[currentQuote % quotes.count]
+        
+        quoteTextView.text = quote.text
         currentQuote += 1
-        //        print( Alamofire.request(.GET, "http://calebmennen.com:5000/todo/api/v1.0/tasks/1"))
-      Alamofire.request(.GET, "http://calebmennen.com:5000/todo/api/v1.0/tasks/1")
+    }
+    
+    func refreshQuotes() {
+        
+        Alamofire.request(.GET, "http://calebmennen.com:5000/todo/api/v1.0/tasks")
             .responseJSON { response in
-                print(response.result.value)
-                let q = Quote.from(response.result.value as! NSDictionary)
-                q!.printQuote()
+                
+                // Attempt to cast our json as a dicationay, then grab the array of quotes, then create the quotes
+                if let
+                    json = response.result.value as? NSDictionary,
+                    quotesJSON = json["tasks"] as? NSArray,
+                    quotes = Quote.from(quotesJSON)
+                {
+                    // Save those quotes
+                    self.quotes = quotes
+                    // Set the first quote
+                    self.setNextQuote()
+                    // Enable the next button
+                    self.nextButton.enabled = true
+                }
+                else {
+                    print(response.result.error?.localizedDescription)
+                    self.quoteTextView.text = "no quotes for u ☹️"
+                }
         }
     }
+    
     @IBAction func nextQuoteButtonPressed(sender: AnyObject) {
         setNextQuote()
     }
