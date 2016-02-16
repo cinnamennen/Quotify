@@ -27,6 +27,13 @@ class ViewController: UIViewController {
     func setNextQuote() {
         quoteTextView.text = quotes[currentQuote % quotes.count]
         currentQuote += 1
+        //        print( Alamofire.request(.GET, "http://calebmennen.com:5000/todo/api/v1.0/tasks/1"))
+      Alamofire.request(.GET, "http://calebmennen.com:5000/todo/api/v1.0/tasks/1")
+            .responseJSON { response in
+                print(response.result.value)
+                let q = Quote.from(response.result.value as! NSDictionary)
+                q!.printQuote()
+        }
     }
     @IBAction func nextQuoteButtonPressed(sender: AnyObject) {
         setNextQuote()

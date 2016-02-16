@@ -24,4 +24,8 @@ struct Quote: Mappable{
         date = map.optionalFrom("date")
         source = map.optionalFrom("source")
     }
+    
+    func printQuote(){
+        print("Quote: " + quote + "\nAuthor: " + author)
+    }
 }
