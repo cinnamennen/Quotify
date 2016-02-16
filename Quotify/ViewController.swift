@@ -15,6 +15,10 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var quoteTextView: UITextView!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var authorTextView: UITextView!
+    @IBAction func swipeNext(sender: UISwipeGestureRecognizer) {
+        setNextQuote()
+    }
     
     var quotes = [Quote]()
     
@@ -34,7 +38,11 @@ class ViewController: UIViewController {
         let quote = quotes[currentQuote % quotes.count]
         
         quoteTextView.text = quote.text
+        authorTextView.text = quote.author
         currentQuote += 1
+        updateTextFont(quoteTextView)
+        updateTextFont(authorTextView)
+        
     }
     
     func refreshQuotes() {
@@ -67,8 +75,36 @@ class ViewController: UIViewController {
         }
     }
     
+    func updateTextFont(textView:UITextView) {
+        if (textView.text.isEmpty || CGSizeEqualToSize(textView.bounds.size, CGSizeZero)) {
+            return;
+        }
+        
+        let textViewSize = textView.frame.size;
+        let fixedWidth = textViewSize.width;
+        let expectSize = textView.sizeThatFits(CGSizeMake(fixedWidth, CGFloat(MAXFLOAT)));
+        
+        var expectFont = textView.font;
+        if (expectSize.height > textViewSize.height) {
+            while (textView.sizeThatFits(CGSizeMake(fixedWidth, CGFloat(MAXFLOAT))).height > textViewSize.height) {
+                expectFont = textView.font!.fontWithSize(textView.font!.pointSize - 1)
+                textView.font = expectFont
+            }
+        }
+        else {
+            while (textView.sizeThatFits(CGSizeMake(fixedWidth, CGFloat(MAXFLOAT))).height < textViewSize.height) {
+                expectFont = textView.font;
+                textView.font = textView.font!.fontWithSize(textView.font!.pointSize + 1)
+            }
+            textView.font = expectFont;
+        }
+    }
+    
     @IBAction func nextQuoteButtonPressed(sender: AnyObject) {
         setNextQuote()
+        
+        
+       
     }
 }
 
