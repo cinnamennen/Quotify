@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var authorTextView: UITextView!
     @IBAction func swipeNext(sender: UISwipeGestureRecognizer) {
-        setNextQuote()
+        refreshQuotes()
     }
     
     var quotes = [Quote]()
@@ -43,21 +43,27 @@ class ViewController: UIViewController {
         updateTextFont(quoteTextView)
         updateTextFont(authorTextView)
         
+        print("Size is now \(quotes.count)")
+        if (quotes.count % 4 == 0) {
+            for l in quotes {
+                print(l.printQuote())
+            }
+        }
+        
     }
     
     func refreshQuotes() {
         
-        Alamofire.request(.GET, "http://calebmennen.com:5000/todo/api/v1.0/tasks")
+        Alamofire.request(.GET, "http://calebmennen.com:5000/todo/api/v1.0/tasks/1")
             .responseJSON { response in
                 
                 // Attempt to cast our json as a dicationay, then grab the array of quotes, then create the quotes
                 if let
                     json = response.result.value as? NSDictionary,
-                    quotesJSON = json["tasks"] as? NSArray,
-                    quotes = Quote.from(quotesJSON)
+                    quotes = Quote.from(json)
                 {
                     // Save those quotes
-                    self.quotes = quotes
+                    self.quotes += [quotes]
                     // Set the first quote
                     self.setNextQuote()
                     // Enable the next button
@@ -101,10 +107,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func nextQuoteButtonPressed(sender: AnyObject) {
-        setNextQuote()
+        refreshQuotes()
         
-        
-       
     }
 }
 
