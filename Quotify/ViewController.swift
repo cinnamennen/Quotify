@@ -7,15 +7,15 @@
 //
 
 import UIKit
-import EasyAnimation
-import Starscream
+//import EasyAnimation
+//import Starscream
 import Alamofire
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var quoteTextView: UITextView!
+    @IBOutlet weak var quoteLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var authorTextView: UITextView!
     @IBAction func swipeNext(sender: UISwipeGestureRecognizer) {
         refreshQuotes()
     }
@@ -37,11 +37,9 @@ class ViewController: UIViewController {
         
         let quote = quotes[currentQuote % quotes.count]
         
-        quoteTextView.text = quote.text
-        authorTextView.text = quote.author
+        quoteLabel.text = quote.text
+        authorLabel.text = quote.author
         currentQuote += 1
-        updateTextFont(quoteTextView)
-        updateTextFont(authorTextView)
         
         print("Size is now \(quotes.count)")
         if (quotes.count % 4 == 0) {
@@ -76,35 +74,35 @@ class ViewController: UIViewController {
                      so something is wrong with the json if this prints nil
                     */
                     print(response.result.error?.localizedDescription)
-                    self.quoteTextView.text = "no quotes for u ☹️"
+                    self.quoteLabel.text = "no quotes for u ☹️"
                 }
         }
     }
     
-    func updateTextFont(textView:UITextView) {
-        if (textView.text.isEmpty || CGSizeEqualToSize(textView.bounds.size, CGSizeZero)) {
-            return;
-        }
-        
-        let textViewSize = textView.frame.size;
-        let fixedWidth = textViewSize.width;
-        let expectSize = textView.sizeThatFits(CGSizeMake(fixedWidth, CGFloat(MAXFLOAT)));
-        
-        var expectFont = textView.font;
-        if (expectSize.height > textViewSize.height) {
-            while (textView.sizeThatFits(CGSizeMake(fixedWidth, CGFloat(MAXFLOAT))).height > textViewSize.height) {
-                expectFont = textView.font!.fontWithSize(textView.font!.pointSize - 1)
-                textView.font = expectFont
-            }
-        }
-        else {
-            while (textView.sizeThatFits(CGSizeMake(fixedWidth, CGFloat(MAXFLOAT))).height < textViewSize.height) {
-                expectFont = textView.font;
-                textView.font = textView.font!.fontWithSize(textView.font!.pointSize + 1)
-            }
-            textView.font = expectFont;
-        }
-    }
+//    func updateTextFont(textView:UITextView) {
+//        if (textView.text.isEmpty || CGSizeEqualToSize(textView.bounds.size, CGSizeZero)) {
+//            return;
+//        }
+//        
+//        let textViewSize = textView.frame.size;
+//        let fixedWidth = textViewSize.width;
+//        let expectSize = textView.sizeThatFits(CGSizeMake(fixedWidth, CGFloat(MAXFLOAT)));
+//        
+//        var expectFont = textView.font;
+//        if (expectSize.height > textViewSize.height) {
+//            while (textView.sizeThatFits(CGSizeMake(fixedWidth, CGFloat(MAXFLOAT))).height > textViewSize.height) {
+//                expectFont = textView.font!.fontWithSize(textView.font!.pointSize - 1)
+//                textView.font = expectFont
+//            }
+//        }
+//        else {
+//            while (textView.sizeThatFits(CGSizeMake(fixedWidth, CGFloat(MAXFLOAT))).height < textViewSize.height) {
+//                expectFont = textView.font;
+//                textView.font = textView.font!.fontWithSize(textView.font!.pointSize + 1)
+//            }
+//            textView.font = expectFont;
+//        }
+//    }
     
     @IBAction func nextQuoteButtonPressed(sender: AnyObject) {
         refreshQuotes()

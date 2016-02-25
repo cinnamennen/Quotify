@@ -1,77 +1,66 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Kvh-09-T4z">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="Pzf-FM-HJq">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Quotify" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Kvh-09-T4z" customClass="ViewController" customModule="Quotify" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="zjB-V6-V6Y"/>
+                        <viewControllerLayoutGuide type="bottom" id="KFy-WC-IhV"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="pud-uv-ZO4">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Loading quotes..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jIt-Ug-pba">
-                                <rect key="frame" x="20" y="28" width="560" height="342"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hX-M7-ISE">
-                                <rect key="frame" x="209" y="562" width="182" height="30"/>
-                                <state key="normal" title="Gimme Another Hot Quote"/>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEc-Qg-v5C">
+                                <rect key="frame" x="28" y="562" width="544" height="30"/>
+                                <state key="normal" title="Next Quote"/>
                                 <connections>
-                                    <action selector="nextQuoteButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TIG-ch-giC"/>
+                                    <action selector="nextQuoteButtonPressed:" destination="Kvh-09-T4z" eventType="touchUpInside" id="UjZ-Zw-Eec"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Finding author..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wul-LK-VT1">
-                                <rect key="frame" x="90" y="378" width="420" height="114"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="w1v-EF-H43">
+                                <rect key="frame" x="28" y="506.5" width="544" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Quote" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Lrs-QC-hVT">
+                                <rect key="frame" x="28" y="28" width="544" height="119.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="jIt-Ug-pba" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="4aY-ve-VGK"/>
-                            <constraint firstItem="jIt-Ug-pba" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="8py-P9-EeC"/>
-                            <constraint firstItem="8hX-M7-ISE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JFQ-g1-0q3"/>
-                            <constraint firstItem="8hX-M7-ISE" firstAttribute="top" secondItem="wul-LK-VT1" secondAttribute="bottom" constant="70" id="KDY-Dr-pvc"/>
-                            <constraint firstItem="wul-LK-VT1" firstAttribute="top" secondItem="jIt-Ug-pba" secondAttribute="bottom" constant="8" id="Re2-d3-ROr"/>
-                            <constraint firstItem="wul-LK-VT1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bfn-3Y-tSp"/>
-                            <constraint firstItem="wul-LK-VT1" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.7" id="fRm-Fw-cge"/>
-                            <constraint firstItem="jIt-Ug-pba" firstAttribute="height" secondItem="wul-LK-VT1" secondAttribute="height" multiplier="3" id="i0c-la-DFo"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="8hX-M7-ISE" secondAttribute="bottom" constant="8" id="jC2-Hv-kO9"/>
-                            <constraint firstItem="jIt-Ug-pba" firstAttribute="leading" secondItem="8hX-M7-ISE" secondAttribute="trailing" constant="-371" id="nqA-re-SLA"/>
-                            <constraint firstItem="jIt-Ug-pba" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="uj0-kq-ipu"/>
+                            <constraint firstItem="w1v-EF-H43" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Lrs-QC-hVT" secondAttribute="bottom" constant="8" id="6zE-fP-6Q5"/>
+                            <constraint firstItem="Lrs-QC-hVT" firstAttribute="top" secondItem="zjB-V6-V6Y" secondAttribute="bottom" constant="8" id="8Yb-oO-yAP"/>
+                            <constraint firstItem="Lrs-QC-hVT" firstAttribute="leading" secondItem="pud-uv-ZO4" secondAttribute="leadingMargin" constant="8" id="FJm-Nu-egY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="w1v-EF-H43" secondAttribute="trailing" constant="8" id="LQk-gX-Fb6"/>
+                            <constraint firstItem="mEc-Qg-v5C" firstAttribute="leading" secondItem="pud-uv-ZO4" secondAttribute="leadingMargin" constant="8" id="RKO-GP-MZ0"/>
+                            <constraint firstItem="w1v-EF-H43" firstAttribute="leading" secondItem="pud-uv-ZO4" secondAttribute="leadingMargin" constant="8" id="Wn2-ze-JFX"/>
+                            <constraint firstItem="KFy-WC-IhV" firstAttribute="top" secondItem="mEc-Qg-v5C" secondAttribute="bottom" constant="8" id="bfB-dt-7BY"/>
+                            <constraint firstItem="mEc-Qg-v5C" firstAttribute="top" secondItem="w1v-EF-H43" secondAttribute="bottom" constant="8" id="d1K-8F-PlT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mEc-Qg-v5C" secondAttribute="trailing" constant="8" id="mBe-74-O92"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Lrs-QC-hVT" secondAttribute="trailing" constant="8" id="yhh-qY-1hh"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="2hD-14-Iib" appends="YES" id="f1i-ws-hDy"/>
-                        </connections>
                     </view>
                     <connections>
-                        <outlet property="authorTextView" destination="wul-LK-VT1" id="vx1-c2-Ku0"/>
-                        <outlet property="nextButton" destination="8hX-M7-ISE" id="07m-ak-vYh"/>
-                        <outlet property="quoteTextView" destination="jIt-Ug-pba" id="KDT-D2-4To"/>
+                        <outlet property="authorLabel" destination="w1v-EF-H43" id="yTh-QI-NMH"/>
+                        <outlet property="nextButton" destination="mEc-Qg-v5C" id="mSL-pj-zd7"/>
+                        <outlet property="quoteLabel" destination="Lrs-QC-hVT" id="isp-5E-uDq"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="left" id="2hD-14-Iib">
-                    <connections>
-                        <action selector="swipeNext:" destination="BYZ-38-t0r" id="rTr-7R-ezg"/>
-                    </connections>
-                </swipeGestureRecognizer>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9CI-MM-tj5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="648" y="189"/>
+            <point key="canvasLocation" x="556" y="-26"/>
         </scene>
     </scenes>
 </document>
